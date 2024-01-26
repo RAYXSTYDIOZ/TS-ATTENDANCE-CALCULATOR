@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            background: #dde1e7;
+            text-align: center;
+        }
+
+        #calc {
+            width: 330px;
+            padding: 40px 30px;
+            background: #dde1e7;
+            border-radius: 10px;
+            box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);
+        }
+
+        #calc .card-header {
+            font-size: 33px;
+            font-weight: 600;
+            margin-bottom: 35px;
+            color: #595959;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            height: 50px;
+            width: 100%;
+            padding-left: 10px;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            background: #dde1e7;
+            color: #595959;
+            border-radius: 25px;
+            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #ffffff73;
+        }
+
+        .form-control:focus {
+            box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #ffffff73;
+        }
+
+        button {
+            margin: 15px 0;
+            height: 50px;
+            font-size: 18px;
+            line-height: 50px;
+            font-weight: 600;
+            background: #dde1e7;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #595959;
+            box-shadow: 2px 2px 5px #BABECC, -5px -5px 10px #ffffff73;
+        }
+
+        button:focus {
+            color: #3498db;
+            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #ffffff73;
+        }
+
+        #attendancePercentageBadge {
+            color: #3498db;
+        }
+
+        #alertBox {
+            margin-top: 20px;
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calc">
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Attendance Calculator</h2>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Total working days for this semester</label>
+                            <input class="form-control" id="totalDays" type="text" value="90" />
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Days Present:</label>
+                            <input class="form-control" id="daysPresent" type="text" />
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateAttendance()" type="button">Calculate Attendance Percentage</button>
+                    </form>
+                    <div class="mt-3">
+                        <h5>Your Attendance Percentage is: <span id="attendancePercentageBadge"></span></h5>
+                    </div>
+                    <div id="alertBox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+ <script>
+        function calculateAttendance() {
+            var totalDays = parseInt(document.getElementById("totalDays").value);
+            var daysPresent = parseInt(document.getElementById("daysPresent").value);
+            var daysAbsent = totalDays - daysPresent;
+            var attendancePercentage = (daysPresent / totalDays) * 100;
+
+            document.getElementById("attendancePercentageBadge").innerHTML = attendancePercentage.toFixed(2) + "%";
+
+            var alertDiv = document.getElementById("alertBox");
+            if (attendancePercentage >= 75) {
+                alertDiv.innerHTML = '<div class="alert alert-success" role="alert">Your attendance percentage is ' + attendancePercentage.toFixed(2) + '%. You are eligible to take the semester exam.</div>';
+            } else {
+                alertDiv.innerHTML = '<div class="alert alert-warning" role="alert">Note: Your attendance percentage is ' + attendancePercentage.toFixed(2) + '%. You need to Do biometric daily  to be eligible to take the semester exam.</div>';
+            }
+        }
+    </script>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    footer {
+      background: linear-gradient(to right, #ff00cc, #33ccff);
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none; 
+      border-bottom: 1px dashed transparent; 
+    }
+
+    a:hover {
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body>
+
+  <footer>
+    <p>&copy; 2024 RayXStudioz</p>
+    <p>Visit My Portfolio <a href="https://www.rayxstudioz.com" target="_blank">RayXStudioz</a></p>
+  </footer>
+
+</body>
+</html>
